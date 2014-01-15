@@ -1,0 +1,36 @@
+--- jexcelapi.orig/build/build.xml	2009-05-26 10:50:16.000000000 -0400
++++ jexcelapi/build/build.xml	2012-02-16 04:48:00.912442786 -0500
+@@ -29,7 +29,7 @@
+   <target name="xllex" depends="init" unless="xllex.notrequired">
+     <java classname="jlex.Main">
+       <arg value="${xllexfile}" />
+-      <classpath path="." />
++      <classpath path="/usr/share/java/jlex.jar" />
+     </java>
+     <copy file="${xllexfile}.java" tofile="${genlextargetfile}" />
+   </target>
+@@ -39,7 +39,7 @@
+       <arg value="--jlex" />
+       <arg value="--nobak" />
+       <arg value="${jflexfile}" />
+-      <classpath path="JFlex.jar" />
++      <classpath path="/usr/share/java/jflex.jar:/usr/share/java/java_cup.jar" />
+     </java>
+     <copy file="Yylex.java" tofile="${genlextargetfile}" />
+   </target>
+@@ -54,6 +54,7 @@
+     <javac destdir="${outputDir}" 
+            classpath=".:${loggerClasspath}" 
+            srcdir="${sourceDir}"
++           encoding="ISO8859-1"
+            debug="true" 
+            deprecation="on">
+       <include name="jxl/*.java" />
+@@ -84,6 +85,7 @@
+     <javadoc sourcepath="${sourceDir}"
+              destdir="${docsDir}"
+              public="true"
++             encoding="ISO8859-1"
+              nodeprecated="false">
+       <package name="jxl" />
+       <package name="jxl.write" />
