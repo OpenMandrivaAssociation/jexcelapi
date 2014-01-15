@@ -25,15 +25,15 @@ BuildRequires:  log4j
 BuildArch:      noarch
 
 %description
-Jexcelapi allows Java developers to read Excel spreadsheets and generate Excel
-spreadsheets dynamically. In addition, it contains a mechanism which allows
-Java applications to read a spreadsheet, modify some cells and write the
-modified spreadsheet.
+Jexcelapi allows Java developers to read Excel spreadsheets and generate
+Excel spreadsheets dynamically. In addition, it contains a mechanism which
+allows Java applications to read a spreadsheet, modify some cells and write
+the modified spreadsheet.
 
-Thanks to jexcelapi non Windows operating systems can run pure Java applications
-which process and deliver Excel spreadsheets. Because it is Java, this API may
-be invoked from within a servlet, thus giving access to Excel functionality
-over internet and intranet web applications.
+Thanks to jexcelapi non Windows operating systems can run pure Java
+applications which process and deliver Excel spreadsheets. Because it
+is Java, this API may be invoked from within a servlet, thus giving access
+to Excel functionality over internet and intranet web applications.
 
 Features:
 - Reads data from Excel 95, 97, 2000 workbooks
