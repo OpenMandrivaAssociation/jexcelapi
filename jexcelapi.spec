@@ -3,8 +3,9 @@
 
 Name:           jexcelapi
 Version:        2.6.12
-Release:        7.0%{?dist}
+Release:        9.1
 Summary:        A Java API to read, write and modify Excel spreadsheets
+Group:		Development/Java
 License:        LGPLv3
 
 URL:            http://www.andykhan.com/jexcelapi
@@ -12,7 +13,7 @@ Source0:        http://www.andykhan.com/jexcelapi/jexcelapi_2_6_12.tar.gz
 Source1:        http://repo1.maven.org/maven2/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.pom
 Patch0:         jexcelapi-build.patch
 Requires:       java >= 0:1.5.0
-Requires:       log4j >= 0:1.2.7
+Requires:       log4j12
 Requires:       jpackage-utils
 
 BuildRequires:  jpackage-utils >= 0:1.7.3
@@ -21,7 +22,7 @@ BuildRequires:  ant
 BuildRequires:  jflex
 BuildRequires:  findutils
 BuildRequires:  sed
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildArch:      noarch
 
 %description
@@ -47,7 +48,6 @@ Features:
 %package        javadoc
 
 Summary:        API documentation for %{name}
-Requires:       jpackage-utils
 
 %description    javadoc
 API documentation for %{name}.
@@ -63,12 +63,13 @@ find . -name "*.class" -exec rm -f {} \;
 find . -name ".#*" -exec rm -f {} \;
 
 %patch0 -p1 -b .build
+sed -i "s|%{_javadir}/jflex.jar|%{_javadir}/jflex/jflex.jar|" build/build.xml
 
 %build
 pushd build
 cat > build.properties <<EOBP
 logger=Log4jLogger
-loggerClasspath=$(build-classpath log4j)
+loggerClasspath=$(build-classpath log4j12-1.2.17)
 EOBP
 
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
@@ -96,11 +97,9 @@ install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_mavenpomdir}/JPP-%{name}.pom
 install -d -m 0755 $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 cp -r docs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 
-%files
+%files -f .mfiles
+%{_javadir}/jxl.jar
 %doc *.html
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%{_mavendepmapfragdir}/*
 
 %files javadoc
 %doc index.html
