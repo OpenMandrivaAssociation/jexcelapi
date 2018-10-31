@@ -3,7 +3,7 @@
 
 Name:           jexcelapi
 Version:        2.6.12
-Release:        9.2
+Release:        9.3
 Summary:        A Java API to read, write and modify Excel spreadsheets
 Group:		Development/Java
 License:        LGPLv3
