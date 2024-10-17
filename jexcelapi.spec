@@ -8,7 +8,7 @@ Summary:        A Java API to read, write and modify Excel spreadsheets
 Group:		Development/Java
 License:        LGPLv3
 
-URL:            http://www.andykhan.com/jexcelapi
+URL:            https://www.andykhan.com/jexcelapi
 Source0:        http://www.andykhan.com/jexcelapi/jexcelapi_2_6_12.tar.gz
 Source1:        http://repo1.maven.org/maven2/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.pom
 Patch0:         jexcelapi-build.patch
